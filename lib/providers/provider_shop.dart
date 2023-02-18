@@ -17,42 +17,35 @@ class ShopList extends ChangeNotifier {
   ];
 
   List<Item> _cartItem = [];
-  int _cartCount= 0;
-
-  //provide all getters
+  int _cartCount = 0;
 
   List<Item> get items => _items;
   List<Item> get cartItems => _cartItem;
   int get itemCount => _items.length;
   int get cartItemCount => _cartItem.length;
-  int get cartCount => _cartCount<=0?0:_cartCount;
+  int get cartCount => _cartCount <= 0 ? 0 : _cartCount;
 
-  //add item to cart
   void addToCart(Item item) {
     if (_cartItem.contains(item)) {
       _cartItem[_cartItem.indexOf(item)].count++;
-
-      
-    }else{
+    } else {
       _cartItem.add(item);
-      _cartItem[_cartItem.indexOf(item)].count=1;
-      _items[_items.indexOf(item)].count=1;
+      _cartItem[_cartItem.indexOf(item)].count = 1;
+      _items[_items.indexOf(item)].count = 1;
     }
     _cartCount++;
     notifyListeners();
   }
 
-  //removing item from cart
   void removeFromCart(Item item) {
-    if (_cartItem.contains(item) && _cartItem[_cartItem.indexOf(item)].count==1) {
+    if (_cartItem.contains(item) &&
+        _cartItem[_cartItem.indexOf(item)].count == 1) {
       _items[_items.indexOf(item)].count--;
       _cartItem.remove(_cartItem[_cartItem.indexOf(item)]);
       _cartCount--;
-      
-    }else if(_cartItem[_cartItem.indexOf(item)].count>0){
+    } else if (_cartItem[_cartItem.indexOf(item)].count > 0) {
       _cartItem[_cartItem.indexOf(item)].count--;
       _cartCount--;
-
     }
     notifyListeners();
   }

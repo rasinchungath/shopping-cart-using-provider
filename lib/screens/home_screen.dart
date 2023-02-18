@@ -58,7 +58,6 @@ class HomeScreen extends StatelessWidget {
                 height: 40,
                 color: context.read<ShopList>().items[index].color,
               ),
-              //item name
               title: Text(
                 context.read<ShopList>().items[index].name,
                 style: const TextStyle(
@@ -88,15 +87,13 @@ class HomeScreen extends StatelessWidget {
                     IconButton(
                         color: Colors.blue.shade900,
                         onPressed:
-                            //conditionally enable/disable button
                             context.watch<ShopList>().items[index].count == 0
-                                    ? null
-                                    :
-                            () {
-                          context.read<ShopList>().removeFromCart(
-                              context.read<ShopList>().items[index]);
-                          print(context.read<ShopList>().cartItems);
-                        },
+                                ? null
+                                : () {
+                                    context.read<ShopList>().removeFromCart(
+                                        context.read<ShopList>().items[index]);
+                                    print(context.read<ShopList>().cartItems);
+                                  },
                         icon: const Icon(Icons.remove_circle)),
                   ],
                 ),

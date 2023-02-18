@@ -5,6 +5,5 @@ class Item {
   final Color color;
   int count;
 
-  Item({ required this.name, required this.color, required this.count});
-  
+  Item({required this.name, required this.color, required this.count});
 }
