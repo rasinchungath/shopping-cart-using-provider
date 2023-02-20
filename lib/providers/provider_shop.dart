@@ -42,11 +42,12 @@ class ShopList extends ChangeNotifier {
         _cartItem[_cartItem.indexOf(item)].count == 1) {
       _items[_items.indexOf(item)].count--;
       _cartItem.remove(_cartItem[_cartItem.indexOf(item)]);
-      _cartCount--;
+     
     } else if (_cartItem[_cartItem.indexOf(item)].count > 0) {
       _cartItem[_cartItem.indexOf(item)].count--;
-      _cartCount--;
+      
     }
+    _cartCount--;
     notifyListeners();
   }
 }
